@@ -1,8 +1,29 @@
 {% extends 'base.html' %} 
-{% block content %}
+{% block content %} {% load static %}
+<div class="container" id="welcome">
+  <div id="bienvenido">
+    <h2>BIENVENIDO {{ user.get_username | upper }}</h2>
+    <h3>Tenemos una lista de productos exclusivas para ti ¿Quieres conocer más?</h3>
+    <button type="button" class="btn btn-outline-secondary" href="{% url 'contacto' %}">Contáctanos</button>
+    </div>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for p in flanes_privados %}
+    <div class="col">
+      <div class="card">
+        <img
+          src={{p.image_url}}
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{p.name}}</h5>
+          <p class="card-text">{{p.description}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
 
-<div class="container">  
-    <h2>bienvenido cliente</h2> </div>
 
-{% endblock %} 
-   

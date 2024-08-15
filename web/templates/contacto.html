@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" id="contacto">
+    <h3>Contáctanos</h3>
+      <form action="/contacto/" method="post">
+        {% csrf_token %} {{form.non_field_errors}}
+        <!-- {{form}} -->
+        <label for="{{form.customer_name.id_for_label}}"
+          >{{form.customer_name.label_tag}}</label
+        >
+        <div>{{form.customer_name}}</div>
+        <div>{{form.customer_name.errors}}</div>
+
+        <label for="{{form.customer_email.id_for_label}}"
+          >{{form.customer_email.label_tag}}</label
+        >
+        <div>{{form.customer_email}}</div>
+        <div>{{form.customer_email.errors}}</div>
+
+        <label for="{{form.message.id_for_label}}"
+          >{{form.message.label_tag}}</label
+        >
+        <div>{{form.message}}</div>
+        <div>{{form.message.errors}}</div>
+
+        <div class="text-center" id="contacto-boton">
+          <input type="submit" value="Enviar" class="btn btn-primary" />
+        </div>
+        <!-- <label for="{{form.customer_name.id_for_label}}">{{form.customer_name.label_tag}}</label> -->
+      </form>
+
+</div>
+{% endblock %}

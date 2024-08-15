@@ -1,18 +1,38 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from . models import Flan, ContactForm
+from .forms import ContactFormForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
 def indice(req):
-    context = {
-        "message": "INDICE",
-         "user": {"username": "Toto", "password": 1234, "is_active": False},
-        "productos": [{"name": "flan de queso", "url":"https://cdn.elcocinerocasero.com/imagen/receta/1000/2018-07-20-09-33-17/flan-de-queso.jpeg"},{"name": "flan de chocolate", "url":"https://cdn.elcocinerocasero.com/imagen/receta/1000/2017-05-08-10-28-01/flan-de-cafe.jpeg"},{"name": "flan de huevo", "url":"https://cdn.elcocinerocasero.com/imagen/receta/1000/2017-03-06-11-47-31/flan-de-huevo.jpeg"},{"name": "flan de vainilla", "url":"https://cdn.elcocinerocasero.com/imagen/receta/1000/2024-01-20-11-27-42/flan-de-leche-condensada.jpeg"},{"name": "flan de galleta", "url":"https://cdn.elcocinerocasero.com/imagen/receta/1000/2022-11-17-21-14-21/flan-de-turron.jpeg"}]
-    }
-    return render(req, 'index.html', context)
+    flanes_publicos = Flan.objects.filter(is_private=False)
+
+    return render(req, 'index.html', {"flanes_publicos":flanes_publicos})
 
 def acerca(req):
     return render(req, 'about.html', {})
 # render -> template
+
+@login_required
 def bienvenido(req):
-     return render(req, 'welcome.html', {})
+    flanes_privados = Flan.objects.filter(is_private=True)
+
+    return render(req, 'welcome.html', {"flanes_privados":flanes_privados})
+
+def contacto(req):
+    if req.method == 'POST':
+        
+        #* FORM
+        form = ContactFormForm(req.POST) # <- {"customer_email": "kiki@gamial.com", "customer_name": "Kiki", "message": "Hola soy Kiki"}
+        if form.is_valid():
+            #* MODEL - Guardamos la data en nuestra DB en la TABLA CONACTFORM
+            ContactForm.objects.create(**form.cleaned_data) # pasamos la data del diccionario .cleaned_data a argumentos
+            return HttpResponseRedirect('/exito')
+    else: 
+        form = ContactFormForm()    
+    return render(req, 'contacto.html', {'form':form})
+    
+def exito(req):
+    return render(req,'exito.html',{})

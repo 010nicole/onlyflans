@@ -17,7 +17,7 @@
         {% include 'header.html' %}
         {% endblock %}
     </div>
-    <div class="container" style="background-color: rgb(255, 0, 191);">
+    <div class="container" id="navbar">
     
     {% block navbar %}
     {% include 'navbar.html' %}
@@ -26,7 +26,8 @@
 {% block content %}
 <!-- aqui va el contendio de la extension a los demas html -->
 {% endblock %}
-    <div class="container" style="background-color: red;" id="footer">
+
+    <div class="container" id="footer">
         {% block footer %}
         {% include 'footer.html' %}
         {% endblock %}
