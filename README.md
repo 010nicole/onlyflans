@@ -17,3 +17,11 @@ ONLYFLANS es una plataforma para vender y comprar postres caseros. Los usuarios 
 - Pip (gestor de paquetes de Python)
 - Virtualenv (opcional, pero recomendado)
 #### Pasos de Instalación
+
+
+# VARIABLES DE ENTORNO
+1. Crear archivo .env en carpeta principal
+2. pip install python-decouple
+3. pip freeze > requirements.txt
+4. En archivo settings.py
+from decouple import config

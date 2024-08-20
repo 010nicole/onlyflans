@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container px-3 text-center py-5 my-5">
+    <div class="row justify-content-center mb-5">
+        <div class="col-10 col-md-2 px-0 shadow-lg">
+            <img class="img-fluid w-100 h-100" src="{{ flan.image_url }}" alt="{{ flan.name }}">
+        </div>
+        <div class="col-10 col-md-6 text-center d-flex flex-column px-0 shadow-lg">
+            <div class="border-bottom border-info py-3">
+                <span class="fw-bold h1">
+                {{ flan.name }}
+            </span>
+            </div>
+            <p class="fs-6 flex-grow-1 text-end px-2">{{ flan.description }}</p>
+            <div class="mt-auto">            
+                <!-- <p class="fs-4 fw-bold my-0" style="background-color:rgb(210, 224, 243);">$ {{ flan.precio }}</p> -->
+                <p class="fs-4 fw-bold my-0" style="background-color:rgb(210, 224, 243);">$ {{flan.price}}</p>
+                <p class="fs-4 fw-bold my-0" style="background-color:rgb(210, 224, 243);">stock: {{flan.stock}}</p>
+            </div>
+        </div>
+    </div>
+    <a href= "{% url 'indice' %}" class="w-25 btn btn-secondary py-2 fw-bold mt-2"><i class="fa-solid fa-house">volver a Inicio</i></a>
+</div>
+{% endblock %}

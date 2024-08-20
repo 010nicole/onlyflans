@@ -26,6 +26,9 @@ body {
 #contacto-boton{
     margin: 5px;
 }
+#welcome .btn{
+    margin-top: 30px;
+}
 #footer {
     background-color: rgb(19, 99, 99);
     margin-top: 10px;
