@@ -1,22 +1,31 @@
 body {
-    background-color: aliceblue;
+    background-color: rgb(172, 211, 245);
 }
+.card-title {
+    font-size: 23pt;
+    font-weight: 700;
+    color: #373A3C;
+    padding-bottom: 15px;
+}
+
 #header{
     display: flex;
-    justify-content: space-around
+    justify-content: space-around;
 }
 #header img {
     width: 50%;
 }
 #navbar{
     margin-bottom: 10px;
+    background-color:rgb(19, 99, 99);
 }
-#bienvenido{
-    color: white;
-    background-color: rgb(49, 49, 49);
+#home h1{
+    margin: 50px;
+}
+#bienvenido {
     height: 200px;
     padding: 20px;
-    margin-bottom: 30px;
+
 }
 #contacto{
     display: flex;
@@ -29,16 +38,25 @@ body {
 #welcome .btn{
     margin-top: 30px;
 }
+
+#acerca{
+    text-align: justify;
+    padding: 20px;
+}
+#carouselExampleDark{
+    margin: 20px;
+    padding: 5px;
+    
+}
+
 #footer {
     background-color: rgb(19, 99, 99);
     margin-top: 10px;
     height: 200px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
     align-items: center;
-    flex-direction: column;
 }
 #footer i {
     font-size: 30px;

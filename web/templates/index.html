@@ -1,19 +1,46 @@
 {% extends 'base.html' %} 
 {% block content %} {% load static %}
 <div class="container" id="home">
-  <hr />
+  <h1 style="text-align: center;">BIENVENIDOS A ONLY FLANS</h1>
+  <h2 style="text-align: center; margin-bottom: 20px;">NUESTROS PRODUCTOS</h2>
+  <h5 style="text-align: justify; margin-bottom: 30px;">El flan es un postre lácteo tradicional,
+    típico de nuestra gastronomía. Se prepara
+    normalmente con huevos enteros, leche y
+    azúcar. El sabor más común es simplemente el
+    de vainilla, pero existen muchas otras variaciones
+    que incluyen almendras, pistacho, limón y otras variedades
+    de frutas.
+    Es tradicionalmente cocinado en baño maría con caramelo en la capa inferior
+    (superior al servirlo). Una vez terminada la cocción el molde es invertido, quedando
+    cubierto el flan con el caramelo. También puede ser preparado con flan instantáneo
+    industrial, el cual lleva una preparación similar a la de la gelatina. En Argentina y
+    algunos países vecinos el flan es generalmente servido con dulce de leche.
+    La historia del flan empieza en los tiempos de la Antigua Roma aunque en aquella
+    época se servía de forma diferente. Ellos crearon el «flan de anguila» y otro tipo de
+    flan que era muy dulce y estaba hecho con pimienta y miel. Cuando los romanos
+    conquistaron Europa llevaron su tradición culinaria con ellos y la extendieron por
+    muchos lugares. También introdujeron un flan hecho de azúcar, queso, almendra,
+    pescado, canela, espinaca y crema pastelera. El flan se hizo muy popular entre los
+    europeos, especialmente durante la Edad Media en la cuaresma, cuando la carne
+    no se podía comer. Los españoles crearon como unos 1.475 tipos diferentes de
+    flanes porque lo consideraban comida saludable. Cuando los españoles llegaron a
+    Sudamérica introdujeron el flan en la cocina mexicana y desde entonces no se ha
+    dejado de usar.</h5>
   <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for p in flanes_publicos %}
+    {% for flan in flanes_publicos %}
     <div class="col">
       <div class="card">
+        <a href="{% url 'detail_flan' flan_uuid=flan.flan_uuid %}">
         <img
-          src={{p.image_url}}
-          class="card-img-top"
+          src={{flan.image_url}}
+          class="card-img-top" style="height: 18rem;"
           alt="..."
-        />
+        /></a>
         <div class="card-body">
-          <h5 class="card-title">{{p.name}}</h5>
-          <p class="card-text">{{p.description}}</p>
+          <h5 class="card-title text-center">{{flan.name}}</h5>
+          <p class="card-text" style="text-align: justify;">{{ flan.description | slice:":100" }}{% if flan.description|length > 50 %}...{% endif %}</p>
+          <p class="card-text"><b>Precio: ${{flan.price}}</b></p>
+          <p class="card-text"><b>Quedan {{flan.stock}} unidades</b></p>
         </div>
       </div>
     </div>

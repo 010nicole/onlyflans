@@ -4,20 +4,23 @@
   <div id="bienvenido">
     <h2>BIENVENIDO {{ user.get_username | upper }}</h2>
     <h3>Tenemos una lista de productos exclusivas para ti ¿Quieres conocer más?</h3>
-    <a class="btn btn-secondary" href="{% url 'contacto' %}" role="button"> Contáctanos </a>
+    <a class="btn btn-primary" href="{% url 'contacto' %}" role="button" > Contáctanos </a>
     </div>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for p in flanes_privados %}
+  <div class="row row-cols-1 row-cols-md-3 g-4" style="margin-top: 20px;">
+    {% for flan in flanes_privados %}
     <div class="col">
       <div class="card">
+        <a href="{% url 'detail_flan' flan_uuid=flan.flan_uuid %}">
         <img
-          src={{p.image_url}}
-          class="card-img-top"
+          src={{flan.image_url}}
+          class="card-img-top" style="height: 18rem;"
           alt="..."
-        />
+        /></a>
         <div class="card-body">
-          <h5 class="card-title">{{p.name}}</h5>
-          <p class="card-text">{{p.description}}</p>
+          <h5 class="card-title text-center">{{flan.name}}</h5>
+          <p class="card-text" style="text-align: justify;">{{ flan.description | slice:":100" }}{% if flan.description|length > 50 %}...{% endif %}</p>
+          <p class="card-text"><b>Precio: ${{flan.price}}</b></p>
+          <p class="card-text"><b>Quedan {{flan.stock}} unidades</b></p>
         </div>
       </div>
     </div>

@@ -1,8 +1,38 @@
 {% extends 'base.html' %} 
 {% block content %}
 
-<div class="container"> 
-    <p>Es indiscutible que si has aterrizado en esta página y nos estás leyendo es porque te gusta la cocina. Es posible que seas, incluso, reincidente, que estés suscrito a nuestras actualizaciones y que pases por aquí con regularidad. Nada nos gusta más que tus visitas y el hecho de que te encante cocinar, pero nos da en la nariz que, igual que a nosotros, también te gusta tener a mano recetas fáciles y rápidas.</p>
+<div class="container" id="acerca"> 
+    <section class="carrusel d-none d-sm-block">
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                    aria-current="true" indicator="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="https://www.thevanillabeanblog.com/wp-content/uploads/2022/04/Photo-Apr-14-12-37-47-AM-scaled.jpg" class="d-inline" alt="slider-1" style="width: 15rem; height: 15rem;">
+                    <img src="https://blog.pizcadesabor.com/wp-content/uploads/2012/11/empanadas-12.jpg" class="d-inline" alt="slider-2" style="width: 15rem; height: 15rem;">
+                    <img src="https://www.100daysofrealfood.com/wp-content/uploads/2010/09/matzo-plated-2048x1362.jpg" class="d-inline" alt="slider-3" style="width: 15rem; height: 15rem;">
+                    <img src="https://stylesweet.com/wp-content/uploads/2022/07/LemonIceboxCakewithRaspberries_02.jpg" class="d-inline" alt="slider-4" style="width: 15rem; height: 15rem;">
+
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="https://www.thecookierookie.com/wp-content/uploads/2023/06/blackberry-ombre-sparkler-recipe.jpg" class="d-inline" alt="slider-5" style="width: 15rem; height: 15rem;">
+                    <img src="https://thishappymommy.com/wp-content/uploads/2016/03/blueberry-cantaloupe-salad-2-1.jpg" class="d-inline" alt="slider-6" style="width: 15rem; height: 15rem;">
+                    <img src="https://www.cookiedoughandovenmitt.com/wp-content/uploads/2021/03/Mint-Chocolate-Dessert-10-Photo-Cookie-Dough-and-Oven-Mitt.jpg" class="d-inline" alt="slider-7" style="width: 15rem; height: 15rem;">
+                    <img src="https://thatovenfeelin.com/wp-content/uploads/2024/01/EASY-PINEAPPLE-DESSERT-1.png" class="d-inline" alt="slider-8" style="width: 15rem; height: 15rem;">
+
+                </div>
+
+            </div>
+        </div>
+
+        </section>
+    <h5>Es indiscutible que si has aterrizado en esta página y nos estás leyendo es porque te gusta la cocina. Es posible que seas, incluso, reincidente, que estés suscrito a nuestras actualizaciones y que pases por aquí con regularidad. Nada nos gusta más que tus visitas y el hecho de que te encante cocinar, pero nos da en la nariz que, igual que a nosotros, también te gusta tener a mano recetas fáciles y rápidas.</h5>
+    <h5>Un pastel es, según la definición del Diccionario de la lengua española de la Real Academia Española, una «masa de harina y manteca, cocida al horno, en que ordinariamente se envuelve crema o dulce, y a veces carne, fruta o pescado»1​. Esta descripción coincide con la que aparece en algún viejo libro de cocina española, como el de Domingo Hernández de Maceras, de 1607,2​nota 1​ en el que el nombre de pastel se aplica solamente a aquel que tiene la masa hojaldrada, con relleno dulce o salado; si es de otro modo (generalmente con masa semejante a la del pan y relleno salado), se llama empanada, y a veces, «empanada a la inglesa». Según el tamaño, se distinguía entre el pastelillo (pequeño), el pastel (individual) y el pastelón (para varias personas); todavía se utilizan estas denominaciones en pastelerías españolas tradicionales.</h5>
 </div>
+
 
 {% endblock %} 

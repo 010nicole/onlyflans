@@ -37,34 +37,41 @@ def contacto(req):
 def exito(req):
     return render(req,'exito.html',{})
 
-def detalle_flan(req,flan_uuid):
+def detalle_flan(request, flan_uuid):
     flan = Flan.objects.get(flan_uuid = flan_uuid)
-    return render(req, 'detail_flan.html',{'flan':flan})
+    return render(request, 'detail_flan.html', {'flan' : flan})
+
 
 @login_required
-def profile_view(req):
-    user_id = req.user.id
-    #profile = Profile.objects.get(user_id=user_id)
-    user = req.user
-    if not hasattr(user,'profile'):
-        Profile.objects.create(user=user) # crea tabla con datos vacios
-
-    if req.method == 'POST':
-        user_form = UserForm(req.Post, instance=req.user)
-        profile_form = ProfileForm(req.POST, instance=req.user.profile)
+def profile_view(request):
+    # Verificar que el User tiene un Perfil 
+    user_id = request.user.id 
+    
+    user = request.user
+    #* User de no tener un Profile, crea la relación
+    if not hasattr(user, 'profile'):
+        Profile.objects.create(user=user)
+        profile = Profile.objects.get(user_id=user_id)
+        print(f'user profile get -> {profile.__dict__}')
+        
+    #* ARMADO POST - crea (guarda en la tabla) - y redirect
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            # Redirigir a la misma página después de guardar
             return redirect('/profile_exito')
+    #* GET FORM - Creamos los forms con los datos de la DB de ese user
     else: 
-        user_form = UserForm(instance=req.user)
-        profile_form =ProfileForm(instance=req.user.profile)
-    return  render(req,'profile.html',{'user_form':user_form,'profile_form':profile_form})
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form,
+    })
 
-def profile_exito(req):
-    return render(req,'profile_exito.html',{})
-            
-        
- 
-    
+def profile_exito(request):
+    return render(request, 'profile_exito.html', {})
     

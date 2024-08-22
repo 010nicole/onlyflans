@@ -12,11 +12,10 @@ class ContactModelForm(forms.ModelForm):
         model = ContactForm
         fields = ['customer_email', 'customer_name', 'message']
 
-#* REGISTER FORMS
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['bio', 'location', 'message']
+        fields = ['bio', 'location', 'birth_date']
 
 class UserForm(forms.ModelForm):
     class Meta:

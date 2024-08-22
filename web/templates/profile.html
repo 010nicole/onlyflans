@@ -1,11 +1,11 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<div class="d-flex flex-column min-vh-100 bg-light">
+<div class="d-flex flex-column min-vh-100 " id="profile">
     <div class="row justify-content-center align-items-center" style="height: 100vh;">
         <div class="col-md-8">
             <!-- Contenido centrado horizontal y verticalmente -->
-            <h2 class="text-center mt-2 mb-4">Perfil</h2>
+            <h1 class="text-center mt-2 mb-4">Perfil de usuario</h1>
             <form method="post">
                 {% csrf_token %}
                 <div class="row">
